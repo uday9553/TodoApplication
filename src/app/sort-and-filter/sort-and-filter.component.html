@@ -1,0 +1,51 @@
+<p>sort-and-filter works!</p>
+<h1>List of todos</h1>
+<div *ngIf="welcomeMessage"  class="alert alert-warning">
+{{welcomeMessage}}
+</div>
+<input type="search" placeholder="search" [(ngModel)]="searchTarm">
+<div class="container">
+  <table class="table" >
+        <caption>List of listoftodos</caption>
+        <thead>
+            <tr>
+                <th>id
+
+
+                    <input type="text" placeholder="search"  [(ngModel)]="id">
+                </th>
+                <th>desc
+                        <input type="text" placeholder="search" [(ngModel)]="identifier">
+                </th>
+                <th>isDone?
+                        <input type="text" placeholder="search"   [(ngModel)]="done">
+                </th>
+                <th>targetDate
+                        <input type="text" placeholder="search" >
+                </th>
+               
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let todo of listoftodos|filterBy:identifier">
+                <td>{{todo.id}}
+                   
+                </td>
+                <td>{{todo.description|uppercase}}</td>
+                <td>{{todo.isDone}}</td>
+                <td>{{todo.targetDate|date}}</td>
+                
+            </tr>
+        </tbody>
+        
+    </table>
+    <hr>
+    <div class="pageDiv">
+        <ul >
+            <li *ngFor="let todo of listoftodos;let i = index">
+                <a href="" (click)="setPage(i,$event)">{{i}}</a>
+            </li>
+        </ul>
+    </div>
+</div>
+

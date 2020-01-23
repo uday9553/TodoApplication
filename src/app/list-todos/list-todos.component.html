@@ -1,0 +1,34 @@
+<h1>List of todos</h1>
+<div *ngIf="welcomeMessage"  class="alert alert-warning">
+{{welcomeMessage}}
+</div>
+<div class="container">
+  <table class="table">
+        <caption>List of todos</caption>
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>desc</th>
+                <th>isDone?</th>
+                <th>targetDate</th>
+                <th>Update</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let todo of todos">
+                <td>{{todo.id}}
+                    
+                </td>
+                <td>{{todo.description}}</td>
+                <td>{{todo.done}}</td>
+                <td>{{todo.targetDate|date}}</td>
+                <td><button (click)="updateButtonClicked(todo.id)"  class="btn ">Update</button></td>
+                <td><button (click)="deleteButtonClicked(todo.id)"  class="btn btn-warning">delete</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class='row'>
+    <button (click)="addButtonClicked()"  class="btn ">Add Todo</button>
+</div>
